@@ -10,6 +10,8 @@ function Login() {
     password: "",
   };
   const [loginData, setLoginData] = useState(initialField);
+  const [candidateName, setCandidateName] = useState("");
+
   const { username, password } = loginData;
   const [errors, setErrors] = useState({});
 
@@ -23,6 +25,9 @@ function Login() {
     }));
   };
 
+  const handleChangeName = (e) => {
+    setCandidateName(e.target.value);
+  };
   const navigate = useNavigate();
 
   const signIn = (e) => {
@@ -38,10 +43,8 @@ function Login() {
     fetch("https://fakestoreapi.com/auth/login", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        if (!result) {
-          alert("hsakcds");
-        }
         console.log(result.token, "result");
+        localStorage.setItem("name", candidateName);
         cookies.set("x-auth-token", result);
         navigate("/");
       })
@@ -56,6 +59,12 @@ function Login() {
         <h1>Sign-in</h1>
 
         <form>
+          <input
+            placeholder="Please Enter Name"
+            name="candidateName"
+            value={candidateName}
+            onChange={handleChangeName}
+          />
           <h5>E-mail</h5>
           <input
             type="text"

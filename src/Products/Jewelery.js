@@ -16,14 +16,13 @@ const Jewelery = () => {
       .then((response) => response.json())
       .then((result) => {
         setLoader(false);
-        console.log(result);
         setJewelery(result);
       })
       .catch((error) => console.log("error", error));
   };
   useEffect(() => {
     jeweleryApiCall();
-  });
+  }, []);
   return (
     <div className="container">
       {loader ? (

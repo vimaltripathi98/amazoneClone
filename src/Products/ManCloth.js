@@ -26,7 +26,7 @@ const ManCloth = () => {
   };
   useEffect(() => {
     manClothApiCall();
-  });
+  }, []);
   return (
     <div className="container">
       {loader ? (

@@ -26,7 +26,7 @@ const Electronics = () => {
   };
   useEffect(() => {
     electronicApiCall();
-  });
+  }, []);
   return (
     <div className="container">
       <div></div>

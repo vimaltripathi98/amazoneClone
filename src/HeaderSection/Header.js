@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import StorefrontIcon from "@mui/icons-material/Storefront";
@@ -9,7 +9,11 @@ import Cookies from "universal-cookie";
 
 const Header = () => {
   const [{ basket }, dispatch] = useStateValue();
+  // const [state, setState] = useState([]);
+  // const [search, setSearch] = useState();
 
+  const data = localStorage.getItem("name");
+  // console.log(data, "name");
   let navigate = useNavigate();
   const handleClick = (key) => {
     if (key == "checkout") {
@@ -26,6 +30,40 @@ const Header = () => {
     navigate("/login");
   };
 
+  // const searchChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setSearch((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const apiCheck = () => {
+  //   var requestOptions = {
+  //     method: "GET",
+  //     redirect: "follow",
+  //   };
+
+  //   fetch("https://fakestoreapi.com/products", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       console.log(result, "res");
+  //       setState(result);
+  //     })
+  //     .catch((error) => console.log("error", error));
+  // };
+
+  // useEffect(() => {
+  //   apiCheck();
+  // }, []);
+
+  // const filteredProduct = state.filter(
+  //   (data) =>
+  //     data.title.toLowerCase().includes(search.toLowerCase()) ||
+  //     data.category.toLowerCase().includes(search.toLowerCase()) ||
+  //     data.description.toLowerCase().includes(search.toLowerCase())
+  // );
+
   return (
     <div className="header">
       <div className="header__logo" onClick={() => handleClick("store")}>
@@ -33,7 +71,13 @@ const Header = () => {
         <h2 className="header__logoTitle">vShop</h2>
       </div>
       <div className="header__search">
-        <input type="text" className="header__searchInput" />
+        <input
+          type="search"
+          className="header__searchInput"
+          // name="search"
+          // value={search}
+          // onChange={searchChange}
+        />
         <SearchIcon className="header__searchIcon" />
       </div>
 
@@ -64,7 +108,7 @@ const Header = () => {
 
       <div className="header__nav">
         <div className="nav__item">
-          <span className="nav__itemLineOne">Hello Guest</span>
+          <span className="nav__itemLineOne">Hello {data}</span>
           <span className="nav__itemLineTwo" onClick={handleChangeSignIn}>
             Sign Out
           </span>
