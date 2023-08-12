@@ -65,7 +65,7 @@ function Login() {
             value={candidateName}
             onChange={handleChangeName}
           />
-          <h5>E-mail</h5>
+          <h5>User Name</h5>
           <input
             type="text"
             name="username"
