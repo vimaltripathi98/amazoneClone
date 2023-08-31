@@ -59,12 +59,12 @@ function Login() {
         <h1>Sign-in</h1>
 
         <form>
-          <input
+          {/* <input
             placeholder="Please Enter Name"
             name="candidateName"
             value={candidateName}
             onChange={handleChangeName}
-          />
+          /> */}
           <h5>User Name</h5>
           <input
             type="text"
@@ -94,6 +94,17 @@ function Login() {
           By signing-in you agree to the eShop Website Conditions of Use & Sale.
           Please see our Privacy Notice, our Cookies Notice and our
           Interest-Based Ads Notice.
+        </p>
+
+        <p>
+          {" "}
+          <span style={{ fontSize: "16px", fontWeight: 700 }}>
+            UserName
+          </span>{" "}
+          <span> mor_2314</span>
+          <br />
+          <span style={{ fontSize: "16px", fontWeight: 700 }}>Password</span>
+          <span> 83r5^_</span>
         </p>
 
         {/* <button className="login__registerButton">
